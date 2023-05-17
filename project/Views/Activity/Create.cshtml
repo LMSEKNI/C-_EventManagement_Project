@@ -1,0 +1,102 @@
+﻿@model ActivityCreateViewModel
+
+<h2>Create Activities</h2>
+
+<h3>Event Details</h3>
+<p>Date Debut: @Model.Event.DateDebut</p>
+<p>Date Fin: @Model.Event.DateFin</p>
+<p>Nombre Max: @Model.Event.NombreMax</p>
+<p>Description: @Model.Event.Description</p>
+<p>Type: @Model.Event.Type</p>
+<p>Nom Event: @Model.Event.NomEvent</p>
+<p>Prix: @Model.Event.Prix</p>
+
+<hr />
+
+<h3>Activities</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.NumberOfActivities)
+
+    <div id="activities-container">
+        @for (int i = 0; i < Model.NumberOfActivities; i++)
+        {
+            <h4>Activity @i</h4>
+
+            <div class="form-group">
+                <label for="Activities[@i].HeureDebut">Heure Debut</label>
+                <input class="form-control" type="time" name="Activities[@i].HeureDebut" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Activities[@i].HeureFin">Heure Fin</label>
+                <input class="form-control" type="time" name="Activities[@i].HeureFin" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Activities[@i].NomActivity">Nom Activity</label>
+                <input class="form-control" type="text" name="Activities[@i].NomActivity" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Activities[@i].Description">Description</label>
+                <input class="form-control" type="text" name="Activities[@i].Description" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Activities[@i].Date">Date</label>
+                <input class="form-control" type="date" name="Activities[@i].Date" required />
+            </div>
+
+            <hr />
+        }
+    </div>
+
+    <button type="button" class="btn btn-primary" id="add-activity-button">Add Activity</button>
+    <button type="submit" class="btn btn-success">Save</button>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var activityIndex = @Model.NumberOfActivities;
+
+            $('#add-activity-button').click(function () {
+                var activityHtml = `
+                    <h4>Activity ${activityIndex}</h4>
+                    
+                    <div class="form-group">
+                        <label for="Activities[${activityIndex}].HeureDebut">Heure Debut</label>
+                        <input class="form-control" type="time" name="Activities[${activityIndex}].HeureDebut" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Activities[${activityIndex}].HeureFin">Heure Fin</label>
+                        <input class="form-control" type="time" name="Activities[${activityIndex}].HeureFin" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Activities[${activityIndex}].NomActivity">Nom Activity</label>
+                        <input class="form-control" type="text" name="Activities[${activityIndex}].NomActivity" required />
+                    </div>
+
+                        <div class="form-group">
+    <label for="Activities[${activityIndex}].Description">Description</label>
+    <input class="form-control" type="text" name="Activities[${activityIndex}].Description" required />
+    </div>                <div class="form-group">
+                    <label for="Activities[${activityIndex}].Date">Date</label>
+                    <input class="form-control" type="date" name="Activities[${activityIndex}].Date" required />
+                </div>
+
+                <hr />
+            `;
+
+            $('#activities-container').append(activityHtml);
+
+            activityIndex++;
+            $('input[name="NumberOfActivities"]').val(activityIndex);
+        });
+    });
+</script>
+}

@@ -1,0 +1,17 @@
+﻿@model EventViewModel
+
+<h1>Delete Event</h1>
+
+<h3>Are you sure you want to delete this event?</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="NomEvent">Event Name</label>
+        <input asp-for="NomEvent" class="form-control" disabled />
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

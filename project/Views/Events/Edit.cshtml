@@ -1,0 +1,44 @@
+﻿@model EventViewModel
+
+<h1>Edit Event</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="DateDebut">Date Début</label>
+        <input asp-for="DateDebut" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateFin">Date Fin</label>
+        <input asp-for="DateFin" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NombreMax">Nombre Max</label>
+        <input asp-for="NombreMax" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type">Type</label>
+        <input asp-for="Type" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NomEvent">Nom Event</label>
+        <input asp-for="NomEvent" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Prix">Prix</label>
+        <input asp-for="Prix" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

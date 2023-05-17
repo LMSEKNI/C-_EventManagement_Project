@@ -1,0 +1,43 @@
+﻿@model EventViewModel
+
+<h1>Create Event</h1>
+
+@using (Html.BeginForm("Create", "Events", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="DateDebut">Date Début</label>
+        <input type="datetime-local" class="form-control" id="DateDebut" name="DateDebut" required />
+    </div>
+
+    <div class="form-group">
+        <label for="DateFin">Date Fin</label>
+        <input type="datetime-local" class="form-control" id="DateFin" name="DateFin" required />
+    </div>
+
+    <div class="form-group">
+        <label for="NombreMax">Nombre Max</label>
+        <input type="number" class="form-control" id="NombreMax" name="NombreMax" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea class="form-control" id="Description" name="Description" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Type">Type</label>
+        <input class="form-control" id="Type" name="Type" required />
+    </div>
+
+    <div class="form-group">
+        <label for="NomEvent">Nom Event</label>
+        <input class="form-control" id="NomEvent" name="NomEvent" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Prix">Prix</label>
+        <input type="number" class="form-control" id="Prix" name="Prix" step="0.01" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}
